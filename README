@@ -1,0 +1,3 @@
+These classes are meant to emulate the PDO classes in PHP 5.
+
+Typical use is on servers where the PDO extension is disabled.

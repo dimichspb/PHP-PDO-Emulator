@@ -62,8 +62,14 @@ class PDO {
 	const ATTR_SERVER_VERSION = 4;
 	const ATTR_CLIENT_VERSION = 5;
 	const ATTR_SERVER_INFO = 6;
+    const ATTR_CASE = 8;
+    const ATTR_ORACLE_NULLS = 11;
 	const ATTR_PERSISTENT = 12;
 	const ATTR_STATEMENT_CLASS = 13;
+    const ATTR_DRIVER_NAME = 16;
+    const ATTR_STRINGIFY_FETCHES = 17;
+    const ATTR_MAX_COLUMN_LEN = 18;
+    const ATTR_EMULATE_PREPARES = 20;
 	
 	const ERRMODE_EXCEPTION = 2;
 
@@ -72,6 +78,10 @@ class PDO {
 	const PARAM_INT = 1;
 	const PARAM_STR = 2;
 	const PARAM_LOB = 3;
+
+    const NULL_NATURAL = 0;
+
+    const CASE_NATURAL = 0;
 	
 	/**
 	 * 'protected' variables:

@@ -1,5 +1,5 @@
 {
-    "name": "ManifestWebDesign/PHP-PDO-Emulator",
+    "name": "manifest-web-design/php-pdo-emulator",
     "description": "PHP PDO Eulator",
     "type": "project",
     "require": {

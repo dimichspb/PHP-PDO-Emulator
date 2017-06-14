@@ -1,5 +1,5 @@
 <?php
-namespace dimichspb\PHP_PDO\Emulator;
+namespace dimichspb\PHP_PDO_Emulator;
 
 use Illuminate\Support\ServiceProvider;
 

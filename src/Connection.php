@@ -6,6 +6,16 @@ use dimichspb\PHP_PDO_Emulator\PDO;
 use Closure;
 use Exception;
 use dimichspb\PHP_PDO_Emulator\PDOStatement;
+use Illuminate\Database\Concerns\ManagesTransactions;
+use Illuminate\Database\ConnectionInterface;
+use Illuminate\Database\DetectsDeadlocks;
+use Illuminate\Database\DetectsLostConnections;
+use Illuminate\Database\Events\StatementPrepared;
+use Illuminate\Database\Events\TransactionBeginning;
+use Illuminate\Database\Events\TransactionCommitted;
+use Illuminate\Database\Events\TransactionRolledBack;
+use Illuminate\Database\Query\Grammars\Grammar;
+use Illuminate\Database\QueryException;
 use LogicException;
 use DateTimeInterface;
 use Illuminate\Support\Arr;
@@ -22,7 +32,7 @@ class Connection implements ConnectionInterface
 {
     use DetectsDeadlocks,
         DetectsLostConnections,
-        Concerns\ManagesTransactions;
+        ManagesTransactions;
 
     /**
      * The active PDO connection.
@@ -374,7 +384,7 @@ class Connection implements ConnectionInterface
     {
         $statement->setFetchMode($this->fetchMode);
 
-        $this->event(new Events\StatementPrepared(
+        $this->event(new StatementPrepared(
             $this, $statement
         ));
 
@@ -770,7 +780,7 @@ class Connection implements ConnectionInterface
     public function listen(Closure $callback)
     {
         if (isset($this->events)) {
-            $this->events->listen(Events\QueryExecuted::class, $callback);
+            $this->events->listen(QueryExecuted::class, $callback);
         }
     }
 
@@ -788,11 +798,11 @@ class Connection implements ConnectionInterface
 
         switch ($event) {
             case 'beganTransaction':
-                return $this->events->dispatch(new Events\TransactionBeginning($this));
+                return $this->events->dispatch(new TransactionBeginning($this));
             case 'committed':
-                return $this->events->dispatch(new Events\TransactionCommitted($this));
+                return $this->events->dispatch(new TransactionCommitted($this));
             case 'rollingBack':
-                return $this->events->dispatch(new Events\TransactionRolledBack($this));
+                return $this->events->dispatch(new TransactionRolledBack($this));
         }
     }
 
@@ -992,7 +1002,7 @@ class Connection implements ConnectionInterface
      * @param  \Illuminate\Database\Query\Grammars\Grammar  $grammar
      * @return void
      */
-    public function setQueryGrammar(Query\Grammars\Grammar $grammar)
+    public function setQueryGrammar(Grammar $grammar)
     {
         $this->queryGrammar = $grammar;
     }
@@ -1013,7 +1023,7 @@ class Connection implements ConnectionInterface
      * @param  \Illuminate\Database\Schema\Grammars\Grammar  $grammar
      * @return void
      */
-    public function setSchemaGrammar(Schema\Grammars\Grammar $grammar)
+    public function setSchemaGrammar(Grammar $grammar)
     {
         $this->schemaGrammar = $grammar;
     }

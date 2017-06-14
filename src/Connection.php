@@ -28,7 +28,7 @@ use Illuminate\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Schema\Builder as SchemaBuilder;
 use Illuminate\Database\Query\Grammars\Grammar as QueryGrammar;
 
-class Connection extends \Illuminate\Database\Connection implements ConnectionInterface
+class Connection implements ConnectionInterface
 {
     use DetectsDeadlocks,
         DetectsLostConnections,

@@ -2,7 +2,7 @@
 
 // check and preserve native PDO driver, for PHP 5.0 users
 if(class_exists('PDO'))
-	return;
+	//return;
 	
 /**
  * Class PDO

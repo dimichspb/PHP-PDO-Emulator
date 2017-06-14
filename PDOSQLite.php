@@ -1,4 +1,5 @@
 <?php
+namespace dimichspb\PHP_PDO_Emulator;
 
 /**
  * Class PDOSQLite

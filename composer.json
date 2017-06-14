@@ -3,6 +3,8 @@
     "description": "PHP PDO Eulator",
     "type": "project",
     "require": {
-        "php": ">=5.5"
+        "php": ">=5.5",
+        "doctrine/dbal": "^2.5",
+        "laravel/framework": "5.4.*"
     }
 }

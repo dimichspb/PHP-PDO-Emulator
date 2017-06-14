@@ -6,5 +6,9 @@
         "php": ">=5.5",
         "doctrine/dbal": "^2.5",
         "laravel/framework": "5.4.*"
+    },
+    "autoload": {
+        "psr-4": {"PHP_PDO_Emulator\\": "src/"}
     }
+
 }

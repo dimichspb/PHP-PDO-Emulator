@@ -1,0 +1,8 @@
+{
+    "name": "ManifestWebDesign/PHP-PDO-Emulator",
+    "description": "PHP PDO Eulator",
+    "type": "project",
+    "require": {
+        "php": ">=5.5",
+    }
+}

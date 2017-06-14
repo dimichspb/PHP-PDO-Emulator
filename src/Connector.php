@@ -8,7 +8,7 @@ use Illuminate\Support\Arr;
 use Doctrine\DBAL\Driver\PDOConnection;
 use Illuminate\Database\DetectsLostConnections;
 
-class Connector
+class Connector extends \Illuminate\Database\Connectors\Connector
 {
     use DetectsLostConnections;
 
